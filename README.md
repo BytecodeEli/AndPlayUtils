@@ -6,9 +6,9 @@ AndPlayUtils
 Source
 ============
 
- I'm not able to upload source right now but if you want it feel free to contact me at d3add3d[at]d3add3d.tk
+ Update: Uploaded! :P
  
- PS: I'll upload source ASAP ;)
+ If you want to build/recompile/reobfuscate just do it the MCP way :D
  
 License
 ============

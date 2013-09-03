@@ -1,0 +1,1 @@
+[{  "modid": "APUtils",  "name": "AndPlay Utils",  "description": "Some utility blocks used by &Play Team",  "version": "0.0.0",  "mcversion": "1.6.2",  "url": "",  "updateUrl": "",  "authors": [    "D3add3d"  ],  "credits": "D3add3d - code",  "logoFile": "",  "screenshots": [  ],  "parent":"",  "dependencies": [  ]}]
