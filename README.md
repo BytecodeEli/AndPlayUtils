@@ -13,4 +13,4 @@ Source
 License
 ============
 
- AndPlayUtils is licensed under LGPL v3(see the LICENSE file)
+ AndPlayUtils is licensed under LGPL v3(see the LICENSE and LESSER files)
