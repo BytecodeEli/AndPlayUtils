@@ -23,6 +23,7 @@ ItemIDs.ITEM_customizerChargedCrystal = config.getItem("customizerChargedCrystal
 ItemIDs.ITEM_customizerEnergyCoreAssembly = config.getItem("customizerEnergyCoreAssemblyItem", ItemIDs.ITEM_customizerEnergyCoreAssembly_default).getInt();
 ItemIDs.ITEM_customizerBread = config.getItem("customizerBreadItem", ItemIDs.ITEM_customizerBread_default).getInt();
 ItemIDs.ITEM_customizerBreadAssembly = config.getItem("customizerBreadAssemblyItem", ItemIDs.ITEM_customizerBreadAssembly_default).getInt();
+ItemIDs.ITEM_aputilsDebugHunger = config.getItem("aputilsDebugHunger", ItemIDs.ITEM_aputilsDebugHunger_default).getInt();
 
 config.save();
 

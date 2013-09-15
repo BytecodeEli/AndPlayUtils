@@ -10,6 +10,9 @@ import tk.d3add3d.aputils.lib.BlockIDs;
 import tk.d3add3d.aputils.lib.ConfigHandler;
 import tk.d3add3d.aputils.lib.ItemIDs;
 import tk.d3add3d.aputils.lib.Reference;
+import tk.d3add3d.aputils.AputilsElectricItem;
+import tk.d3add3d.aputils.AputilsElectricBreadItem;
+import tk.d3add3d.aputils.AputilsElectricDebugHungerItem;
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -19,13 +22,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraftforge.oredict.*;
 
 @SuppressWarnings("unused")
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
 public class AputilsCore {
 	
 	public static Block dreamBlock, slimeBlock, customizerOreBlock;
-	public static Item customizerCrystalItem, customizerCircuitItem, customizerEnergyCoreItem, customizerChargedCrystalItem, customizerEnergyCoreAssemblyItem, customizerBreadItem, customizerBreadAssemblyItem;
+	public static Item customizerCrystalItem, customizerCircuitItem, customizerEnergyCoreItem, customizerChargedCrystalItem, customizerEnergyCoreAssemblyItem, customizerBreadItem, customizerBreadAssemblyItem, aputilsDebugHungerItem;
 	public static AputilsCreativeTab tab = new AputilsCreativeTab(AputilsCreativeTab.getNextID(),Reference.MOD_ID);
 	
 		
@@ -46,8 +50,9 @@ public void load(FMLInitializationEvent event) {
 	customizerCircuitItem = new AputilsItem(ItemIDs.ITEM_customizerCircuit).setMaxStackSize(16).setUnlocalizedName("customizerCircuitItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerCircuitItem");
 	customizerEnergyCoreItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCore).setMaxStackSize(1).setUnlocalizedName("customizerEnergyCoreItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerEnergyCoreItem");
 	customizerEnergyCoreAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCoreAssembly).setMaxStackSize(1).setUnlocalizedName("customizerEnergyCoreAssemblyItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerEnergyCoreAssemblyItem");
-	customizerBreadItem = new AputilsItem(ItemIDs.ITEM_customizerBread).setMaxStackSize(1).setUnlocalizedName("customizerBreadItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerBreadItem");
+	customizerBreadItem = new AputilsElectricBreadItem(ItemIDs.ITEM_customizerBread).setMaxStackSize(1).setUnlocalizedName("customizerBreadItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerBreadItem");
 	customizerBreadAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerBreadAssembly).setMaxStackSize(16).setUnlocalizedName("customizerBreadAssemblyItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerBreadAssemblyItem");
+	//aputilsDebugHungerItem = new AputilsElectricDebugHungerItem(ItemIDs.ITEM_aputilsDebugHunger).setMaxStackSize(1).setUnlocalizedName("aputilsDebugHungerItem").setCreativeTab(AputilsCore.tab).func_111206_d("aputils:customizerEnergyCoreItem");
 	
 	//block registers
 	LanguageRegistry.addName(dreamBlock, "Dream Block");
@@ -62,9 +67,13 @@ public void load(FMLInitializationEvent event) {
 	GameRegistry.registerItem(customizerCrystalItem, "customizerCrystalItem");
 	LanguageRegistry.addName(customizerCircuitItem, "Customizer Circuit");
 	GameRegistry.registerItem(customizerCircuitItem, "customizerCircuitItem");
+	LanguageRegistry.addName(customizerEnergyCoreItem, "Customizer Energy Core");
 	GameRegistry.registerItem(customizerEnergyCoreItem, "customizerEnergyCoreItem");
+	LanguageRegistry.addName(customizerEnergyCoreAssemblyItem, "Customizer Energy Core Assembly");
 	GameRegistry.registerItem(customizerEnergyCoreAssemblyItem, "customizerEnergyCoreAssemblyItem");
+	LanguageRegistry.addName(customizerBreadItem, "Customizer Bread");
 	GameRegistry.registerItem(customizerBreadItem, "customizerBreadItem");
+	LanguageRegistry.addName(customizerBreadAssemblyItem, "Customizer Bread Assembly");
 	GameRegistry.registerItem(customizerBreadAssemblyItem, "customizerBreadAssemblyItem");
 	
 }
@@ -90,6 +99,7 @@ public void postInit(FMLPostInitializationEvent event) {
 	FurnaceRecipes.smelting().addSmelting(customizerCrystalItem.itemID, 0, new ItemStack(customizerChargedCrystalItem), 0.2F);
 	FurnaceRecipes.smelting().addSmelting(customizerEnergyCoreAssemblyItem.itemID, 0, new ItemStack(customizerEnergyCoreItem), 0.3F);
 	FurnaceRecipes.smelting().addSmelting(customizerBreadAssemblyItem.itemID, 0, new ItemStack(customizerBreadItem), 0.8F);
+	FurnaceRecipes.smelting().addSmelting(Item.rottenFlesh.itemID, 0, new ItemStack(Item.leather), 0.1F);
 	//temp recipe
 	GameRegistry.addSmelting(22, new ItemStack(customizerOreBlock, 16), 0.1F);
 	
@@ -104,6 +114,7 @@ public void postInit(FMLPostInitializationEvent event) {
 	if (Loader.isModLoaded("IC2")) {
 	Recipes.macerator.addRecipe(new RecipeInputItemStack(customizerOreStack, 1), null, new ItemStack(customizerCrystalItem, 4));
 	Recipes.extractor.addRecipe(new RecipeInputItemStack(slimeBlockStack, 64), null, new ItemStack(Item.slimeBall, 16));
+	FurnaceRecipes.smelting().addSmelting(Item.slimeBall.itemID, 0, ic2.api.item.Items.getItem("rubber"), 0.1F);
 	}
 	
 }

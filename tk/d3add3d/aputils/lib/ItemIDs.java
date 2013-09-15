@@ -15,4 +15,6 @@ public class ItemIDs {
 	public static final int ITEM_customizerBread_default = 5255;
 	public static int ITEM_customizerBreadAssembly;
 	public static final int ITEM_customizerBreadAssembly_default = 5256;
+	public static int ITEM_aputilsDebugHunger;
+	public static final int ITEM_aputilsDebugHunger_default = 5257;
 }
