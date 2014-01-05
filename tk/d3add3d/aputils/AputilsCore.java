@@ -104,9 +104,6 @@ public void load(FMLInitializationEvent event) {
 	OreDictionary.registerOre("oreCustomizer", customizerOreBlock);
 	OreDictionary.registerOre("gemCustomizer", new ItemStack(customizerCrystalItem));
 	
-	//try to add oreCustomizer to Mystcraft ages.... somehow
-	//I have no idea how to do that
-	
 }
 
 @EventHandler

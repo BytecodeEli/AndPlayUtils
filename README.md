@@ -8,7 +8,7 @@ Source
 
  If you want to build/recompile/reobfuscate just do it the MCP way :D
  
- AndPlay Utils require IC2 EXPERIMENTAL API build #125 to be present when compiling!
+ AndPlay Utils require IC2 EXPERIMENTAL API build #345+ to be present when compiling!
  
 License
 ============
