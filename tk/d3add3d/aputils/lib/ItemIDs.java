@@ -17,4 +17,16 @@ public class ItemIDs {
 	public static final int ITEM_customizerBreadAssembly_default = 5256;
 	public static int ITEM_aputilsDebugHunger;
 	public static final int ITEM_aputilsDebugHunger_default = 5257;
+	public static int ITEM_aputilsBaconFood;
+	public static final int ITEM_aputilsBaconFood_default = 5258;
+	public static int ITEM_aputilsHotDogFood;
+	public static final int ITEM_aputilsHotDogFood_default = 5259;
+	public static int ITEM_aputilsPorkMinced;
+	public static final int ITEM_aputilsPorkMinced_default = 5260;
+	public static int ITEM_aputilsPorkDoubleMinced;
+	public static final int ITEM_aputilsPorkDoubleMinced_default = 5261;
+	public static int ITEM_aputilsKlobasaFood;
+	public static final int ITEM_aputilsKlobasaFood_default = 5262;
+	public static int ITEM_aputilsParokFood;
+	public static final int ITEM_aputilsParokFood_default = 5263;
 }

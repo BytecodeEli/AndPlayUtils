@@ -20,7 +20,7 @@ public class AputilsElectricBreadItem extends AputilsElectricItem {
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-		if(ElectricItem.manager.use(itemstack, 1500, player)) {
+		if(ElectricItem.manager.use(itemstack, 1000, player)) {
 			if(!world.isRemote)
 				player.addChatMessage("Beep! I mean: Adding food...");
 		player.getFoodStats().addStats(20, 20.0F);
