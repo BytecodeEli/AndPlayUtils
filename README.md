@@ -3,6 +3,11 @@ AndPlayUtils
 
  &amp;Play utilities mod since Minecraft 1.6.2
  
+ANNOUNCEMENT!
+============
+
+ AndPlay Utils will NEVER be updated to 1.7+ !
+
 Source
 ============
 
