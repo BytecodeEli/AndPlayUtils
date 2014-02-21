@@ -17,6 +17,7 @@ config.load();
 BlockIDs.BLOCK_dream = config.getBlock("dreamBlock", BlockIDs.BLOCK_dream_default).getInt();
 BlockIDs.BLOCK_slime = config.getBlock("zelatinaBlock", BlockIDs.BLOCK_slime_default).getInt();
 BlockIDs.BLOCK_customizerOre = config.getBlock("customizerOreBlock", BlockIDs.BLOCK_customizerOre_default).getInt();
+BlockIDs.BLOCK_poweriumOre = config.getBlock("poweriumOreBlock", BlockIDs.BLOCK_poweriumOre_default).getInt();
 
 ItemIDs.ITEM_customizerCrystal = config.getItem("customizerCrystalItem", ItemIDs.ITEM_customizerCrystal_default).getInt();
 ItemIDs.ITEM_customizerCircuit = config.getItem("customizerCircuitItem", ItemIDs.ITEM_customizerCircuit_default).getInt();
@@ -32,6 +33,7 @@ ItemIDs.ITEM_aputilsPorkMinced = config.getItem("aputilsPorkMincedItem", ItemIDs
 ItemIDs.ITEM_aputilsPorkDoubleMinced = config.getItem("aputilsPorkDoubleMincedItem", ItemIDs.ITEM_aputilsPorkDoubleMinced_default).getInt();
 ItemIDs.ITEM_aputilsKlobasaFood = config.getItem("aputilsKlobasaFoodItem", ItemIDs.ITEM_aputilsKlobasaFood_default).getInt();
 ItemIDs.ITEM_aputilsParokFood = config.getItem("aputilsParokFoodItem", ItemIDs.ITEM_aputilsParokFood_default).getInt();
+ItemIDs.ITEM_poweriumGem = config.getItem("poweriumGemItem", ItemIDs.ITEM_poweriumGem_default).getInt();
 
 MiscConfigs.MISC_generateNether = config.get("general", "Generate ores in Nether", MiscConfigs.MISC_generateNether_default, "0 for false, 1 for true").getInt();
 MiscConfigs.MISC_generateEnd = config.get("general", "Generate ores in The End", MiscConfigs.MISC_generateEnd_default, "0 for false, 1 for true").getInt();

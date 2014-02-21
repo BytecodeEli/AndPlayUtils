@@ -7,9 +7,11 @@ import cpw.mods.fml.relauncher.*;
 
 @SuppressWarnings("unused")
 public class AputilsItem extends Item {
-
-	public AputilsItem(int par1) {
+	
+	public AputilsItem(int par1, String par3String) {
 		super(par1);
+		this.setTextureName("aputils:" + par3String);
+		this.setCreativeTab(AputilsCore.tab);
 	}
 
 }

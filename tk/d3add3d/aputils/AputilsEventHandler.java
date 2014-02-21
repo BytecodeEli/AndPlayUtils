@@ -21,17 +21,20 @@ public class AputilsEventHandler implements IWorldGenerator {
 	      
 	private void generateEnd(World world, Random random, int x, int z) {
 		if(MiscConfigs.MISC_generateEnd==1) {
-			this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 15, 5, 128);
+			this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 15, 5, 128, Block.whiteStone.blockID);
+			this.addOreSpawn(AputilsCore.poweriumOreBlock, world, random, x, z, 16, 16, 3 + random.nextInt(3), 8, 5, 128, Block.whiteStone.blockID);
 		}
 	}
 
 	private void generateSurface(World world, Random random, int x, int z) {
-		this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 5, 5, 50);
+		this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 5, 5, 50, Block.stone.blockID);
+		this.addOreSpawn(AputilsCore.poweriumOreBlock, world, random, x, z, 16, 16, 3 + random.nextInt(3), 8, 5, 20, Block.stone.blockID);
 	}
 
 	private void generateNether(World world, Random random, int x, int z) {
 		if(MiscConfigs.MISC_generateNether==1) {
-			this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 5, 5, 128);
+			this.addOreSpawn(AputilsCore.customizerOreBlock, world, random, x, z, 16, 16, 9 + random.nextInt(3), 5, 5, 250, Block.netherrack.blockID);
+			this.addOreSpawn(AputilsCore.poweriumOreBlock, world, random, x, z, 16, 16, 3 + random.nextInt(3), 8, 5, 250, Block.netherrack.blockID);
 		}
 	}
 
@@ -50,7 +53,7 @@ public class AputilsEventHandler implements IWorldGenerator {
 	        * @param minY An int for the minimum Y-Coordinate height at which this block may spawn
 	        * @param maxY An int for the maximum Y-Coordinate height at which this block may spawn
 	        **/
-	       public void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY)
+	       public void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chancesToSpawn, int minY, int maxY, int replaceBlock)
 	       {
 	             @SuppressWarnings("unused")
 				int maxPossY = minY + (maxY - 1);
@@ -66,7 +69,7 @@ public class AputilsEventHandler implements IWorldGenerator {
 	                    int posX = blockXPos + random.nextInt(maxX);
 	                    int posY = minY + random.nextInt(diffBtwnMinMaxY);
 	                    int posZ = blockZPos + random.nextInt(maxZ);
-	                    (new WorldGenMinable(block.blockID, maxVeinSize)).generate(world, random, posX, posY, posZ);
+	                    (new WorldGenMinable(block.blockID, maxVeinSize, replaceBlock)).generate(world, random, posX, posY, posZ);
 	             }
 	       }
 	}

@@ -11,12 +11,14 @@ import cpw.mods.fml.relauncher.*;
 
 @SuppressWarnings("unused")
 public class AputilsElectricBreadItem extends AputilsElectricItem {
-
-	public AputilsElectricBreadItem(int par1) {
+	
+	public AputilsElectricBreadItem(int par1, String par3String) {
 		super(par1);
 		this.maxCharge = 150000;
 		this.tier = 3;
 		this.transferLimit = 2048;
+		this.setTextureName("aputils:" + par3String);
+		this.setCreativeTab(AputilsCore.tab);
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {

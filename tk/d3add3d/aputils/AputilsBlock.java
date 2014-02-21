@@ -14,6 +14,7 @@ public class AputilsBlock extends Block{
 	public AputilsBlock(int par1, Material par2Material, String par3String) {
 		super(par1, par2Material);
 		this.blockTexture = par3String;
+		this.setCreativeTab(AputilsCore.tab);
 	}
 	
 	@SideOnly(Side.CLIENT)

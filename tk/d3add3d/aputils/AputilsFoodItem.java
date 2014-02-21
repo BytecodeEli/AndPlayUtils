@@ -12,8 +12,10 @@ import cpw.mods.fml.relauncher.*;
 @SuppressWarnings("unused")
 public class AputilsFoodItem extends ItemFood {
 
-	public AputilsFoodItem(int par1, int par2, float par3) {
+	public AputilsFoodItem(int par1, int par2, float par3, String par4String) {
 		//par1 - id, par2 - foodStat, par3 - saturation, bool - wolf food
 		super(par1, par2, par3, false);
+		this.setTextureName("aputils:" + par4String);
+		this.setCreativeTab(AputilsCore.tab);
 	}
 }

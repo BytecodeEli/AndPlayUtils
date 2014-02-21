@@ -29,4 +29,6 @@ public class ItemIDs {
 	public static final int ITEM_aputilsKlobasaFood_default = 5262;
 	public static int ITEM_aputilsParokFood;
 	public static final int ITEM_aputilsParokFood_default = 5263;
+	public static int ITEM_poweriumGem;
+	public static final int ITEM_poweriumGem_default = 5264;
 }

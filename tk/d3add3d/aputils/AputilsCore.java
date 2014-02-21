@@ -22,14 +22,15 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.*;
 
 @SuppressWarnings("unused")
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER)
 public class AputilsCore {
 	
-	public static Block dreamBlock, slimeBlock, customizerOreBlock;
-	public static Item customizerCrystalItem, customizerCircuitItem, customizerEnergyCoreItem, customizerChargedCrystalItem, customizerEnergyCoreAssemblyItem, customizerBreadItem, customizerBreadAssemblyItem, aputilsDebugHungerItem, aputilsBaconFoodItem, aputilsHotDogFoodItem, aputilsPorkMincedItem, aputilsPorkDoubleMincedItem, aputilsKlobasaFoodItem, aputilsParokFoodItem;
+	public static Block dreamBlock, slimeBlock, customizerOreBlock, poweriumOreBlock;
+	public static Item customizerCrystalItem, customizerCircuitItem, customizerEnergyCoreItem, customizerChargedCrystalItem, customizerEnergyCoreAssemblyItem, customizerBreadItem, customizerBreadAssemblyItem, aputilsDebugHungerItem, aputilsBaconFoodItem, aputilsHotDogFoodItem, aputilsPorkMincedItem, aputilsPorkDoubleMincedItem, aputilsKlobasaFoodItem, aputilsParokFoodItem, poweriumGemItem;
 	public static AputilsCreativeTab tab = new AputilsCreativeTab(AputilsCreativeTab.getNextID(),Reference.MOD_ID);
 	AputilsEventHandler eventhandler = new AputilsEventHandler();
 	
@@ -43,23 +44,29 @@ public void preInit(FMLPreInitializationEvent event) {
 public void load(FMLInitializationEvent event) {
 	
 	//init blocks and items
-	dreamBlock = new AputilsBlock(BlockIDs.BLOCK_dream, Material.rock, "dreamBlock").setHardness(0.0F).setResistance(200.0F).setUnlocalizedName("dreamBlock").setStepSound(Block.soundStoneFootstep).setLightValue(1.0F).setCreativeTab(AputilsCore.tab);
-	slimeBlock = new AputilsBlock(BlockIDs.BLOCK_slime, Material.rock, "slimeBlock").setHardness(1.0F).setLightOpacity(4).setUnlocalizedName("slimeBlock").setStepSound(Block.soundSnowFootstep).setLightValue(0.1F).setCreativeTab(AputilsCore.tab);
-	customizerOreBlock = new AputilsBlock(BlockIDs.BLOCK_customizerOre, Material.rock, "customizerOreBlock").setHardness(2.0F).setResistance(1.0F).setUnlocalizedName("customizerOreBlock").setStepSound(Block.soundStoneFootstep).setLightOpacity(7).setCreativeTab(AputilsCore.tab);
-	customizerCrystalItem = new AputilsItem(ItemIDs.ITEM_customizerCrystal).setMaxStackSize(64).setUnlocalizedName("customizerCrystalItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerCrystalItem");
-	customizerChargedCrystalItem = new AputilsItem(ItemIDs.ITEM_customizerChargedCrystal).setMaxStackSize(64).setUnlocalizedName("customizerChargedCrystalItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerChargedCrystalItem");
-	customizerCircuitItem = new AputilsItem(ItemIDs.ITEM_customizerCircuit).setMaxStackSize(16).setUnlocalizedName("customizerCircuitItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerCircuitItem");
-	customizerEnergyCoreItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCore).setMaxStackSize(1).setUnlocalizedName("customizerEnergyCoreItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerEnergyCoreItem");
-	customizerEnergyCoreAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCoreAssembly).setMaxStackSize(1).setUnlocalizedName("customizerEnergyCoreAssemblyItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerEnergyCoreAssemblyItem");
-	customizerBreadItem = new AputilsElectricBreadItem(ItemIDs.ITEM_customizerBread).setMaxStackSize(1).setUnlocalizedName("customizerBreadItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerBreadItem");
-	customizerBreadAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerBreadAssembly).setMaxStackSize(16).setUnlocalizedName("customizerBreadAssemblyItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerBreadAssemblyItem");
-	aputilsDebugHungerItem = new AputilsElectricDebugHungerItem(ItemIDs.ITEM_aputilsDebugHunger).setMaxStackSize(1).setUnlocalizedName("aputilsDebugHungerItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:customizerEnergyCoreItem");
-	aputilsBaconFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsBaconFood, 7,13.0F).setMaxStackSize(64).setUnlocalizedName("aputilsBaconFoodItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsBaconFoodItem");
-	aputilsHotDogFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsHotDogFood, 11, 17.5F).setMaxStackSize(64).setUnlocalizedName("aputilsHotDogFoodItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsHotDogFoodItem");
-	aputilsPorkMincedItem = new AputilsItem(ItemIDs.ITEM_aputilsPorkMinced).setMaxStackSize(16).setUnlocalizedName("aputilsPorkMincedItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsPorkMincedItem");
-	aputilsPorkDoubleMincedItem = new AputilsItem(ItemIDs.ITEM_aputilsPorkDoubleMinced).setMaxStackSize(16).setUnlocalizedName("aputilsPorkDubleMincedItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsPorkDoubleMincedItem");
-	aputilsKlobasaFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsKlobasaFood, 9, 14.0F).setMaxStackSize(64).setUnlocalizedName("aputilsKlobasaFoodItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsKlobasaFoodItem");
-	aputilsParokFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsParokFood, 9, 13.0F).setMaxStackSize(64).setUnlocalizedName("aputilsParokFoodItem").setCreativeTab(AputilsCore.tab).setTextureName("aputils:aputilsParokFoodItem");
+	dreamBlock = new AputilsBlock(BlockIDs.BLOCK_dream, Material.rock, "dreamBlock").setHardness(0.0F).setResistance(200.0F).setUnlocalizedName("dreamBlock").setStepSound(Block.soundStoneFootstep).setLightValue(1.0F);
+	slimeBlock = new AputilsBlock(BlockIDs.BLOCK_slime, Material.rock, "slimeBlock").setHardness(1.0F).setLightOpacity(4).setUnlocalizedName("slimeBlock").setStepSound(Block.soundSnowFootstep).setLightValue(0.1F);
+	customizerOreBlock = new AputilsBlockOre(BlockIDs.BLOCK_customizerOre, Material.rock, "customizerOreBlock").setHardness(1.0F).setResistance(2.0F).setUnlocalizedName("customizerOreBlock").setStepSound(Block.soundStoneFootstep).setLightValue(3);
+	poweriumOreBlock = new AputilsBlockOrePowerium(BlockIDs.BLOCK_poweriumOre, Material.rock, "poweriumOreBlock").setHardness(2.0F).setResistance(2.0f).setUnlocalizedName("poweriumOreBlock").setStepSound(Block.soundStoneFootstep).setLightValue(9);
+	customizerCrystalItem = new AputilsItem(ItemIDs.ITEM_customizerCrystal, "customizerCrystalItem").setMaxStackSize(64).setUnlocalizedName("customizerCrystalItem");
+	customizerChargedCrystalItem = new AputilsItem(ItemIDs.ITEM_customizerChargedCrystal, "customizerChargedCrystalItem").setMaxStackSize(64).setUnlocalizedName("customizerChargedCrystalItem");
+	customizerCircuitItem = new AputilsItem(ItemIDs.ITEM_customizerCircuit, "customizerCircuitItem").setMaxStackSize(16).setUnlocalizedName("customizerCircuitItem");
+	customizerEnergyCoreItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCore, "customizerEnergyCoreItem").setMaxStackSize(16).setUnlocalizedName("customizerEnergyCoreItem");
+	customizerEnergyCoreAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerEnergyCoreAssembly, "customizerEnergyCoreAssemblyItem").setMaxStackSize(1).setUnlocalizedName("customizerEnergyCoreAssemblyItem");
+	customizerBreadItem = new AputilsElectricBreadItem(ItemIDs.ITEM_customizerBread, "customizerBreadItem").setMaxStackSize(1).setUnlocalizedName("customizerBreadItem");
+	customizerBreadAssemblyItem = new AputilsItem(ItemIDs.ITEM_customizerBreadAssembly, "customizerBreadAssemblyItem").setMaxStackSize(16).setUnlocalizedName("customizerBreadAssemblyItem");
+	aputilsDebugHungerItem = new AputilsElectricDebugHungerItem(ItemIDs.ITEM_aputilsDebugHunger, "customizerEnergyCoreItem").setMaxStackSize(1).setUnlocalizedName("aputilsDebugHungerItem");
+	aputilsBaconFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsBaconFood, 7,13.0F, "aputilsBaconFoodItem").setMaxStackSize(64).setUnlocalizedName("aputilsBaconFoodItem");
+	aputilsHotDogFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsHotDogFood, 11, 17.5F, "aputilsHotDogFoodItem").setMaxStackSize(64).setUnlocalizedName("aputilsHotDogFoodItem");
+	aputilsPorkMincedItem = new AputilsItem(ItemIDs.ITEM_aputilsPorkMinced, "aputilsPorkMincedItem").setMaxStackSize(64).setUnlocalizedName("aputilsPorkMincedItem");
+	aputilsPorkDoubleMincedItem = new AputilsItem(ItemIDs.ITEM_aputilsPorkDoubleMinced, "aputilsPorkDoubleMincedItem").setMaxStackSize(64).setUnlocalizedName("aputilsPorkDubleMincedItem");
+	aputilsKlobasaFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsKlobasaFood, 9, 14.0F, "aputilsKlobasaFoodItem").setMaxStackSize(64).setUnlocalizedName("aputilsKlobasaFoodItem");
+	aputilsParokFoodItem = new AputilsFoodItem(ItemIDs.ITEM_aputilsParokFood, 9, 13.0F, "aputilsParokFoodItem").setMaxStackSize(64).setUnlocalizedName("aputilsParokFoodItem");
+	poweriumGemItem = new AputilsItem(ItemIDs.ITEM_poweriumGem, "poweriumGemItem").setMaxStackSize(64).setUnlocalizedName("poweriumGemItem");
+	
+	MinecraftForge.setBlockHarvestLevel(customizerOreBlock, "pickaxe", 2);
+	MinecraftForge.setBlockHarvestLevel(slimeBlock, "shovel", 1);
+	MinecraftForge.setBlockHarvestLevel(poweriumOreBlock, "pickaxe", 3);
     	
 	//block registers
 	LanguageRegistry.addName(dreamBlock, "Dream Block");
@@ -68,6 +75,8 @@ public void load(FMLInitializationEvent event) {
 	GameRegistry.registerBlock(slimeBlock, "slimeBlock");
 	LanguageRegistry.addName(customizerOreBlock, "Customizer Ore");
 	GameRegistry.registerBlock(customizerOreBlock, "customizerOreBlock");
+	LanguageRegistry.addName(poweriumOreBlock, "Powerium Ore");
+	GameRegistry.registerBlock(poweriumOreBlock, "poweriumOreBlock");
 	
 	//item registers
 	LanguageRegistry.addName(customizerCrystalItem, "Customizer Crystal");
@@ -96,6 +105,8 @@ public void load(FMLInitializationEvent event) {
 	GameRegistry.registerItem(aputilsKlobasaFoodItem, "aputilsKlobasaFoodItem");
 	LanguageRegistry.addName(aputilsParokFoodItem, "Parok");
 	GameRegistry.registerItem(aputilsParokFoodItem, "aputilsParokFoodItem");
+	LanguageRegistry.addName(poweriumGemItem, "Powerium gem");
+	GameRegistry.registerItem(poweriumGemItem, "poweriumGemItem");
 	
 	//world gen
 	GameRegistry.registerWorldGenerator(eventhandler);
@@ -143,6 +154,7 @@ public void postInit(FMLPostInitializationEvent event) {
 	GameRegistry.addRecipe(new ItemStack(customizerCircuitItem), "rcr", "chc", "rir", 'r', vanillaRedstoneStack, 'c', customizerCrystalStack, 'h', customizerChargedCrystalStack, 'i', vanillaIronStack);
 	GameRegistry.addRecipe(new ItemStack(customizerBreadAssemblyItem), "qrq", "fcf", "bqb", 'q', customizerCircuitStack, 'r', customizerCrystalStack, 'c', customizerEnergyCoreStack, 'f', customizerChargedCrystalStack, 'b', vanillaBreadStack);
 	GameRegistry.addShapelessRecipe(new ItemStack(aputilsHotDogFoodItem), aputilsParokStack, vanillaBreadStack);
+	GameRegistry.addRecipe(new ItemStack(Block.dirt, 32), "   ", "   ", " x ", 'x', customizerCrystalStack);
 	
 	//ic2 macerating recipes
 	if (Loader.isModLoaded("IC2")) {

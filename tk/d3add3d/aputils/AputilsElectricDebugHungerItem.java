@@ -12,11 +12,13 @@ import cpw.mods.fml.relauncher.*;
 @SuppressWarnings("unused")
 public class AputilsElectricDebugHungerItem extends AputilsElectricItem {
 
-	public AputilsElectricDebugHungerItem(int par1) {
+	public AputilsElectricDebugHungerItem(int par1, String par3String) {
 		super(par1);
 		this.maxCharge = 1000;
 		this.tier = 1;
 		this.transferLimit = 32;
+		this.setTextureName("aputils:" + par3String);
+		this.setCreativeTab(AputilsCore.tab);
 	}
 	
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
