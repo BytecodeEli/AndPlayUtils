@@ -19,3 +19,8 @@ License
 ============
 
  AndPlayUtils is licensed under LGPL v3(see the LICENSE and LESSER files)
+ 
+Test
+============
+
+ Just testing, I added Notifico! to this repo :)
